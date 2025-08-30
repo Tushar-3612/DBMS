@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Button CSS</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+      font-family: Arial, sans-serif;
+    }
+
+    .order {
+      position: relative;
+      width: 200px;
+      height: 60px;
+      background: #1e293b;
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+      line-height: 60px;
+      transition: all 0.3s;
+    }
+
+    .order:hover {
+      background: #0f172a;
+    }
+
+    /* Truck element */
+    .order .truck {
+      width: 60px;
+      height: 41px;
+      left: 100%;
+      z-index: 1;
+      top: 11px;
+      position: absolute;
+      transform: translateX(24px);
+      background: url('https://cdn-icons-png.flaticon.com/512/743/743131.png') no-repeat center/contain;
+      transition: 1s ease-in-out;
+    }
+
+    /* On click animation */
+    .order.active .truck {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order" onclick="this.classList.toggle('active')">
+    Order
+    <div class="truck"></div>
+  </div>
+
+</body>
+</html>
