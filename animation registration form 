@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Signup Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .container {
+      width: 350px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
+      padding: 20px;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .input-group label {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #667eea;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #764ba2;
+    }
+
+    .toggle-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .toggle-text span {
+      color: #667eea;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="form-container">
+    <!-- Signup Form -->
+    <div id="signup-form">
+      <h2>Signup</h2>
+      <div class="input-group">
+        <label for="signup-username">Username</label>
+        <input type="text" id="signup-username" placeholder="Enter username">
+      </div>
+      <div class="input-group">
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" placeholder="Enter email">
+      </div>
+      <div class="input-group">
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" placeholder="Enter password">
+      </div>
+      <button class="btn" onclick="signup()">Signup</button>
+      <p class="toggle-text">Already have an account? <span onclick="toggleForm('login')">Login</span></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" style="display:none;">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" placeholder="Enter email">
+      </div>
+      <div class="input-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" placeholder="Enter password">
+      </div>
+      <button class="btn" onclick="login()">Login</button>
+      <p class="toggle-text">Don't have an account? <span onclick="toggleForm('signup')">Signup</span></p>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm(form) {
+      if (form === "login") {
+        document.getElementById("signup-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+      } else {
+        document.getElementById("signup-form").style.display = "block";
+        document.getElementById("login-form").style.display = "none";
+      }
+    }
+
+    function signup() {
+      let username = document.getElementById("signup-username").value;
+      let email = document.getElementById("signup-email").value;
+      let password = document.getElementById("signup-password").value;
+
+      if (username && email && password) {
+        alert("Signup successful 🎉\nUsername: " + username + "\nEmail: " + email);
+        toggleForm("login");
+      } else {
+        alert("Please fill all fields!");
+      }
+    }
+
+    function login() {
+      let email = document.getElementById("login-email").value;
+      let password = document.getElementById("login-password").value;
+
+      if (email && password) {
+        alert("Login successful ✅\nWelcome back: " + email);
+      } else {
+        alert("Please enter email and password!");
+      }
+    }
+  </script>
+</body>
+</html>
